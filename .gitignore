@@ -1,0 +1,5 @@
+<!-- .gitignore -->
+<xaiArtifact artifact_id="12345678-9abc-def0-1234-56789abcdef0" artifact_version_id="bcdef123-4567-890a-bcde-f1234567890a" title=".gitignore" contentType="text/plain">
+node_modules/
+dist/
+.env

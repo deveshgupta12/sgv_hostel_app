@@ -13,6 +13,7 @@ function App() {
     studentId: '',
     roomId: '',
   });
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchStudents();
@@ -21,68 +22,108 @@ function App() {
   }, []);
 
   const fetchStudents = async () => {
-    const response = await fetch('http://localhost:5001/api/students');
-    const data = await response.json();
-    setStudents(data);
+    try {
+      const response = await fetch('http://localhost:5001/api/students');
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      const data = await response.json();
+      setStudents(data);
+    } catch (err) {
+      console.error('Error fetching students:', err);
+      setError('Failed to fetch students. Please check if the student service is running.');
+    }
   };
 
   const fetchRooms = async () => {
-    const response = await fetch('http://localhost:5002/api/rooms');
-    const data = await response.json();
-    setRooms(data);
+    try {
+      const response = await fetch('http://localhost:5002/api/rooms');
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      const data = await response.json();
+      setRooms(data);
+    } catch (err) {
+      console.error('Error fetching rooms:', err);
+      setError('Failed to fetch rooms. Please check if the room service is running.');
+    }
   };
 
   const fetchBookings = async () => {
-    const response = await fetch('http://localhost:5003/api/bookings');
-    const data = await response.json();
-    setBookings(data);
+    try {
+      const response = await fetch('http://localhost:5003/api/bookings');
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      const data = await response.json();
+      setBookings(data);
+    } catch (err) {
+      console.error('Error fetching bookings:', err);
+      setError('Failed to fetch bookings. Please check if the booking service is running.');
+    }
   };
 
   const handleAddStudent = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5001/api/students', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: formData.name }),
-    });
-    fetchStudents();
-    setFormData({ ...formData, name: '' });
+    try {
+      const response = await fetch('http://localhost:5001/api/students', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name }),
+      });
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      fetchStudents();
+      setFormData({ ...formData, name: '' });
+      setError(null);
+    } catch (err) {
+      console.error('Error adding student:', err);
+      setError('Failed to add student. Please try again.');
+    }
   };
 
   const handleAddRoom = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5002/api/rooms', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        roomNumber: formData.roomNumber,
-        roomSize: formData.roomSize,
-        rent: parseFloat(formData.rent),
-        isOccupied: false,
-      }),
-    });
-    fetchRooms();
-    setFormData({ ...formData, roomNumber: '', roomSize: 'Single', rent: '' });
+    try {
+      const response = await fetch('http://localhost:5002/api/rooms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          roomNumber: formData.roomNumber,
+          roomSize: formData.roomSize,
+          rent: parseFloat(formData.rent),
+          isOccupied: false,
+        }),
+      });
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      fetchRooms();
+      setFormData({ ...formData, roomNumber: '', roomSize: 'Single', rent: '' });
+      setError(null);
+    } catch (err) {
+      console.error('Error adding room:', err);
+      setError('Failed to add room. Please try again.');
+    }
   };
 
   const handleAddBooking = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5003/api/bookings', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        studentId: formData.studentId,
-        roomId: formData.roomId,
-      }),
-    });
-    fetchBookings();
-    fetchRooms();
-    setFormData({ ...formData, studentId: '', roomId: '' });
+    try {
+      const response = await fetch('http://localhost:5003/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentId: formData.studentId,
+          roomId: formData.roomId,
+        }),
+      });
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      fetchBookings();
+      fetchRooms();
+      setFormData({ ...formData, studentId: '', roomId: '' });
+      setError(null);
+    } catch (err) {
+      console.error('Error adding booking:', err);
+      setError('Failed to add booking. Please try again.');
+    }
   };
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Hostel Management System</h1>
+      <h1 className="text-3xl font-bold mb-6">SGV Hostel Management</h1>
+      {error && <div className="text-red-500 mb-4">{error}</div>}
 
       {/* Add Student */}
       <div className="mb-8">

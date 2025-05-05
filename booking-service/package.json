@@ -1,7 +1,7 @@
 {
-  "name": "booking-service",
+  "name": "sgv-hostel-booking-service",
   "version": "1.0.0",
-  "description": "Booking microservice for hostel management",
+  "description": "Booking microservice for SGV hostel management",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

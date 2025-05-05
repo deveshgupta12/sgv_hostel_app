@@ -1,6 +1,6 @@
 # Student Service
 
-Microservice for managing student data.
+Microservice for managing student data in the SGV hostel app.
 
 ## Setup
 1. Install dependencies: `npm install`

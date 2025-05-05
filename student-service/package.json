@@ -1,7 +1,7 @@
 {
-  "name": "student-service",
+  "name": "sgv-hostel-student-service",
   "version": "1.0.0",
-  "description": "Student microservice for hostel management",
+  "description": "Student microservice for SGV hostel management",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

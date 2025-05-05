@@ -1,6 +1,6 @@
 # Booking Service
 
-Microservice for managing bookings.
+Microservice for managing bookings in the SGV hostel app.
 
 ## Setup
 1. Install dependencies: `npm install`

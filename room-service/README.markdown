@@ -1,6 +1,6 @@
 # Room Service
 
-Microservice for managing room data.
+Microservice for managing room data in the SGV hostel app.
 
 ## Setup
 1. Install dependencies: `npm install`

@@ -1,6 +1,6 @@
-# Hostel Management Frontend
+# SGV Hostel Frontend
 
-React-based frontend for the hostel management system.
+React-based frontend for the SGV hostel management system.
 
 ## Setup
 1. Install dependencies: `npm install`

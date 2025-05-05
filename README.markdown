@@ -48,6 +48,6 @@ A 3-tier microservices-based hostel management system with a React frontend, Nod
 - Create bookings for available rooms.
 - View students, rooms, and bookings.
 
-## Future Enhancements
-- Add authentication, validation, and error handling.
-- Implement booking cancellation and room availability filters.
+## Troubleshooting
+- **404 Errors**: Ensure all microservices and MongoDB are running. Check console logs for specific errors.
+- **CORS Issues**: Verify CORS is enabled in backend services.

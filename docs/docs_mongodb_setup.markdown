@@ -1,6 +1,6 @@
 # MongoDB Setup
 
-Instructions for setting up MongoDB for the hostel management app.
+Instructions for setting up MongoDB for the SGV hostel app.
 
 1. Install MongoDB if not already installed.
 2. Start MongoDB server: `mongod`

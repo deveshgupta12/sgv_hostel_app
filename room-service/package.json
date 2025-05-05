@@ -1,7 +1,7 @@
 {
-  "name": "room-service",
+  "name": "sgv-hostel-room-service",
   "version": "1.0.0",
-  "description": "Room microservice for hostel management",
+  "description": "Room microservice for SGV hostel management",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
